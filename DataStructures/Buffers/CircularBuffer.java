@@ -1,14 +1,15 @@
 package DataStructures.Buffers;
 
 import java.util.Random;
+// 一个自增整数，记录实时的数据个数
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CircularBuffer {
   private char[] _buffer;
-  public final int _buffer_size;
-  private int _write_index = 0;
-  private int _read_index = 0;
-  private AtomicInteger _readable_data = new AtomicInteger(0);
+  public final int _buffer_size;  // 初始长度，不可更改
+  private int _write_index = 0;   // 写入的下标
+  private int _read_index = 0;    // 读取的下标
+  private AtomicInteger _readable_data = new AtomicInteger(0); //自增标记，起始为0
 
   public CircularBuffer(int buffer_size) {
     if (!IsPowerOfTwo(buffer_size)) {
@@ -17,7 +18,10 @@ public class CircularBuffer {
     this._buffer_size = buffer_size;
     _buffer = new char[buffer_size];
   }
-
+  
+  /**
+    不允许出现两个数组长度
+  */
   private boolean IsPowerOfTwo(int i) {
     return (i & (i - 1)) == 0;
   }
@@ -82,6 +86,7 @@ public class CircularBuffer {
     }
   }
 
+  
   private static class TestReadWorker implements Runnable {
     CircularBuffer _buffer;
 
