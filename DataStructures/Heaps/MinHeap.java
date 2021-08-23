@@ -6,13 +6,14 @@ import java.util.List;
 /**
  * Heap tree where a node's key is higher than or equal to its parent's and lower than or equal to
  * its children's.
- *
+ *最小堆： 【一个结点的值 ≥ 父结点的值 并且 ≤ 子结点的值】
  * @author Nicolas Renard
  */
 public class MinHeap implements Heap {
 
   private final List<HeapElement> minHeap;
 
+  // 通过列表创建最小堆
   public MinHeap(List<HeapElement> listElements) {
     minHeap = new ArrayList<>();
     for (HeapElement heapElement : listElements) {
@@ -81,7 +82,7 @@ public class MinHeap implements Heap {
 
   @Override
   public void insertElement(HeapElement element) {
-    minHeap.add(element);
+    minHeap.add(element); // 将元素添加到末尾
     toggleUp(minHeap.size());
   }
 
