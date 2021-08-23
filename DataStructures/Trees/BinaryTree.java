@@ -8,7 +8,7 @@ package DataStructures.Trees;
 /**
  * A binary tree is a data structure in which an element has two successors(children). The left
  * child is usually smaller than the parent, and the right child is usually bigger.
- *
+ * 二叉树是一种数据结构，对于一个元素拥有两个孩子。通常左子结点的值小于父节点，右子结点的值大于父节点
  * @author Unknown
  */
 public class BinaryTree {
@@ -52,7 +52,7 @@ public class BinaryTree {
 
   /**
    * Method to find a Node with a certain value
-   *
+   *从根结点出发查找，通过值进行查找结点，如果值以前不存在则变为查找 以该值创建新结点 所在的父节点（即查找插入位置）
    * @param key Value being looked for
    * @return The node if it finds it, otherwise returns the parent
    */
@@ -85,12 +85,12 @@ public class BinaryTree {
       Node parent = find(value);
 
       // This if/else assigns the new node to be either the left or right child of the parent
-      if (value < parent.data) {
+      if (value < parent.data) {// 值小于父结点位置的值时
         parent.left = newNode;
         parent.left.parent = parent;
         return;
       } else {
-        parent.right = newNode;
+        parent.right = newNode;// 值大于等于父结点位置的值时
         parent.right.parent = parent;
         return;
       }
